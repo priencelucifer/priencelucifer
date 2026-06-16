@@ -1,16 +1,16 @@
 <div align="center">
 
 ```
- ██▀███   ██▓ ▄████▄   ██ ▄█▀▓██   ██▓
-▓██ ▒ ██▒▓██▒▒██▀ ▀█   ██▄█▒  ▒██  ██▒
-▓██ ░▄█ ▒▒██▒▒▓█    ▄ ▓███▄░   ▒██ ██░
-▒██▀▀█▄  ░██░▒▓▓▄ ▄██▒▓██ █▄   ░ ▐██▓░
-░██▓ ▒██▒░██░▒ ▓███▀ ░▒██▒ █▄  ░ ██▒▓░
-░ ▒▓ ░▒▓░░▓  ░ ░▒ ▒  ░▒ ▒▒ ▓▒   ██▒▒▒ 
+██████╗ ██╗ ██████╗██╗  ██╗██╗   ██╗
+██╔══██╗██║██╔════╝██║ ██╔╝╚██╗ ██╔╝
+██████╔╝██║██║     █████╔╝  ╚████╔╝ 
+██╔══██╗██║██║     ██╔═██╗   ╚██╔╝  
+██║  ██║██║╚██████╗██║  ██╗   ██║   
+╚═╝  ╚═╝╚═╝ ╚═════╝╚═╝  ╚═╝   ╚═╝   
 ```
 
 <a href="https://github.com/priencelucifer">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=24&pause=900&color=00FF66&center=true&vCenter=true&width=620&height=50&lines=embedded+%2F+hardware+hacker;C+%E2%80%A2+C%2B%2B+%E2%80%A2+Python+%E2%80%A2+TypeScript;Raspberry+Pi+Pico+%E2%80%A2+ESP32+%E2%80%A2+IoT;I+build+things+that+beep.+%E2%9A%A1" alt="typing banner" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=24&pause=900&color=00FF66&center=true&vCenter=true&width=640&height=50&lines=embedded+%2F+hardware+hacker;networking+%E2%80%A2+self-hosting+%E2%80%A2+homelab;deployment+%E2%80%A2+containers+%E2%80%A2+CI%2FCD;Raspberry+Pi+Pico+%E2%80%A2+ESP32+%E2%80%A2+IoT;I+break+it%2C+I+host+it%2C+I+ship+it.+%E2%9A%A1" alt="typing banner" />
 </a>
 
 </div>
@@ -22,14 +22,16 @@ ricky@github:~$ whoami
 > Ricky Kashyap — embedded / hardware hacker
 
 ricky@github:~$ cat about.txt
-> I solder microcontrollers into doing things they probably shouldn't.
-> Currently bridging the gap between bare-metal firmware and the web.
+> I solder microcontrollers into doing things they probably shouldn't,
+> then deploy the dashboards for them on my own homelab.
+> Bridging the gap between bare-metal firmware, the network, and the web.
 
 ricky@github:~$ ls ~/interests/
-> firmware/   security-keys/   ble-hid/   iot-sensors/   full-stack/
+> firmware/   security-keys/   ble-hid/   iot-sensors/
+> homelab/    networking/      self-hosting/   deployment/   full-stack/
 
-ricky@github:~$ sudo make coffee
-> [██████████] brewing... ☕  status: caffeinated
+ricky@github:~$ docker compose up -d && systemctl status homelab
+> [██████████] services up   ☕ status: caffeinated   📡 uptime: 99.9%
 ```
 
 <!-- ===================== TECH STACK ===================== -->
@@ -51,6 +53,24 @@ ricky@github:~$ sudo make coffee
 ![ESP32](https://img.shields.io/badge/ESP32-E7352C?style=for-the-badge&logo=espressif&logoColor=white)
 ![Arduino](https://img.shields.io/badge/Arduino-00878F?style=for-the-badge&logo=arduino&logoColor=white)
 ![PlatformIO](https://img.shields.io/badge/PlatformIO-FF7F00?style=for-the-badge&logo=platformio&logoColor=white)
+
+**Networking & Self-Hosting**
+
+![Cloudflare](https://img.shields.io/badge/Cloudflare-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)
+![NGINX](https://img.shields.io/badge/NGINX-009639?style=for-the-badge&logo=nginx&logoColor=white)
+![WireGuard](https://img.shields.io/badge/WireGuard-88171A?style=for-the-badge&logo=wireguard&logoColor=white)
+![Tailscale](https://img.shields.io/badge/Tailscale-242424?style=for-the-badge&logo=tailscale&logoColor=white)
+![pfSense](https://img.shields.io/badge/pfSense-212121?style=for-the-badge&logo=pfsense&logoColor=white)
+![Pi-hole](https://img.shields.io/badge/Pi--hole-96060C?style=for-the-badge&logo=pihole&logoColor=white)
+
+**Deployment & DevOps**
+
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Proxmox](https://img.shields.io/badge/Proxmox-E57000?style=for-the-badge&logo=proxmox&logoColor=white)
+![Portainer](https://img.shields.io/badge/Portainer-13BEF9?style=for-the-badge&logo=portainer&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)
+![Grafana](https://img.shields.io/badge/Grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white)
+![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
 
 **Tools & Platforms**
 
@@ -96,6 +116,20 @@ Account-free P2P + cloud library for students to share notes. Zero PII.
 </td>
 </tr>
 </table>
+
+<!-- ===================== HOMELAB ===================== -->
+## `> homelab_rack`
+
+```ini
+[ host ]      Proxmox VE  ·  bare-metal hypervisor + LXC/VMs
+[ network ]   pfSense gateway · VLANs · Pi-hole DNS · WireGuard mesh
+[ ingress ]   Cloudflare Tunnel  →  NGINX reverse proxy  →  services
+[ deploy ]    Docker Compose · Portainer · GitHub Actions (push-to-deploy)
+[ observe ]   Grafana + Prometheus dashboards · uptime monitoring
+[ runners ]   Raspberry Pi cluster · always-on edge nodes
+```
+
+> Self-hosted, zero-trust, and ships on every `git push`. Tinkering never stops. 🛠️
 
 <!-- ===================== GITHUB STATS ===================== -->
 ## `> github_stats`
