@@ -146,3 +146,5 @@ Account-free P2P + cloud library for students to share notes. Zero PII.
 <sub><i>« thanks for stopping by — now go build something that beeps »</i></sub>
 
 </div>
+
+<!-- profile readme v2 -->
