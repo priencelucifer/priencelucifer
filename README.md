@@ -137,7 +137,7 @@ Account-free P2P + cloud library for students to share notes. Zero PII.
 <div align="center">
 
 <img height="170" src="https://github-readme-stats-sigma-five.vercel.app/api?username=priencelucifer&show_icons=true&count_private=true&hide_border=true&title_color=00FF66&icon_color=00FF66&text_color=c9d1d9&bg_color=0d1117" alt="github stats" />
-<img height="170" src="https://streak-stats.demolab.com/?user=priencelucifer&hide_border=true&background=0d1117&stroke=00FF66&ring=00FF66&fire=00FF66&currStreakLabel=00FF66&sideLabels=c9d1d9&dates=8b949e&currStreakNum=c9d1d9&sideNums=c9d1d9&type=svg" alt="streak stats" />
+<img height="170" src="https://raw.githubusercontent.com/priencelucifer/priencelucifer/streak/streak.svg" alt="streak stats" />
 
 <img height="170" src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=priencelucifer&layout=compact&hide_border=true&title_color=00FF66&text_color=c9d1d9&bg_color=0d1117&langs_count=8" alt="top languages" />
 
