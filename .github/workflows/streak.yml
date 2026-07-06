@@ -1,0 +1,31 @@
+name: Update streak card
+on:
+  schedule:
+    - cron: "17 2,10,18 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  streak:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch streak card
+        run: |
+          URL='https://streak-stats.demolab.com/?user=priencelucifer&hide_border=true&background=0d1117&stroke=00FF66&ring=00FF66&fire=00FF66&currStreakLabel=00FF66&sideLabels=c9d1d9&dates=8b949e&currStreakNum=c9d1d9&sideNums=c9d1d9'
+          for i in 1 2 3 4 5; do
+            if curl -fsSL --max-time 120 "$URL" -o streak.svg && grep -q "Current Streak" streak.svg && ! grep -q "Failed to retrieve" streak.svg; then
+              exit 0
+            fi
+            sleep 20
+          done
+          echo "could not fetch a good card after 5 tries" >&2
+          exit 1
+      - name: Publish to streak branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch --orphan streak
+          git add -f streak.svg
+          git commit -m "update streak card"
+          git push -f origin streak
