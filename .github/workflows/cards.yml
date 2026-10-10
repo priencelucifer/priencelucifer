@@ -29,7 +29,9 @@ jobs:
 
       - name: Render cards
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Optional: a CARDS_TOKEN secret (classic PAT, read:user + repo) makes PR/issue/commit
+          # counts include private repos. Repo, star and language numbers stay public-only.
+          GITHUB_TOKEN: ${{ secrets.CARDS_TOKEN || secrets.GITHUB_TOKEN }}
           GH_USER: ${{ github.repository_owner }}
         run: python3 .github/scripts/cards.py "$RUNNER_TEMP/cards"
 
