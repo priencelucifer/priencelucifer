@@ -1,0 +1,45 @@
+name: Update profile cards
+
+# Renders header / stats / languages / streak / repo cards with
+# .github/scripts/cards.py and publishes them to the `cards` branch.
+# Nothing depends on third-party card services, so they can't go down on us.
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/scripts/cards.py
+      - .github/workflows/cards.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cards
+  cancel-in-progress: true
+
+jobs:
+  cards:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Render cards
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_USER: ${{ github.repository_owner }}
+        run: python3 .github/scripts/cards.py "$RUNNER_TEMP/cards"
+
+      # Only reached when rendering succeeded, so a bad API day keeps the last good cards.
+      - name: Publish to cards branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch --orphan cards
+          cp "$RUNNER_TEMP"/cards/*.svg .
+          git add -f *.svg
+          git commit -qm "update cards"
+          git push -f origin cards
