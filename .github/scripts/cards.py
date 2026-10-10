@@ -35,6 +35,11 @@ BG, PANEL, BORDER = "#0d1117", "#161b22", "#30363d"
 GREEN, TEXT, MUTED, DIM = "#00ff66", "#c9d1d9", "#8b949e", "#484f58"
 FONT = "'JetBrains Mono','Fira Code','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace"
 
+# GitHub's README column is 846px on desktop and ~308px on phones. 410px cards sit
+# two per row on desktop and wrap to one per row on phones; the wide header/streak
+# are only served to desktops (via <picture> in the README), phones get the compact ones.
+CARD_W, WIDE_W = 410, 824
+
 esc = html.escape
 
 
@@ -254,11 +259,16 @@ def ansi_art(x0, y0, cw, ch, d=3):
     return "".join(rects), " ".join(path)
 
 
-def header_card():
-    w, h, cw, ch = 850, 300, 14, 26
+def header_card(compact=False):
+    if compact:
+        w, h, cw, ch, y0, tag_size = CARD_W, 268, 10, 19, 76, 14
+        cmd, taglines = "figlet ricky", ["embedded · networking", "self-hosting · homelab"]
+    else:
+        w, h, cw, ch, y0, tag_size = WIDE_W, 300, 14, 26, 84, 13
+        cmd, taglines = 'figlet -f "ANSI Shadow" ricky', ["embedded  ·  networking  ·  self-hosting  ·  homelab"]
     art_w = len(RICKY[0]) * cw
-    x0, y0 = (w - art_w) / 2, 84
-    blocks, shadow = ansi_art(x0, y0, cw, ch)
+    x0 = (w - art_w) / 2
+    blocks, shadow = ansi_art(x0, y0, cw, ch, d=cw * .22)
     css = f"""
 .art {{ animation: flicker 7s infinite; }}
 .ghost {{ opacity: 0; animation: glitch 7s infinite; }}
@@ -286,20 +296,24 @@ def header_card():
     <stop offset="1" stop-color="#000" stop-opacity=".55"/>
   </radialGradient>
   <g id="blocks">{blocks}</g>"""
-    tagline = "embedded  ·  networking  ·  self-hosting  ·  homelab"
-    tag_w = len(tagline) * 13 * 0.6
+    ty = y0 + len(RICKY) * ch + 32
+    tags = "".join(
+        f'<text x="{w / 2}" y="{ty + i * 22}" text-anchor="middle" font-size="{tag_size}" fill="{MUTED}" letter-spacing=".5">{esc(t)}</text>'
+        for i, t in enumerate(taglines)
+    )
+    last_y, last_w = ty + (len(taglines) - 1) * 22, len(taglines[-1]) * (tag_size * 0.6 + 0.5)
     body = f"""
   <rect y="31" width="{w}" height="{h}" fill="url(#dots)"/>
   <rect y="31" width="{w}" height="{h}" fill="url(#vignette)"/>
-  {prompt(28, 62, 'figlet -f "ANSI Shadow" ricky')}
+  {prompt(24 if compact else 28, 60 if compact else 62, cmd)}
   <g class="ghost"><use xlink:href="#blocks" fill="#ff2e88"/></g>
   <g class="ghost b"><use xlink:href="#blocks" fill="#00e5ff"/></g>
   <g class="art">
-    <path d="{shadow}" fill="none" stroke="{GREEN}" stroke-opacity=".45" stroke-width="1.6" stroke-linejoin="miter"/>
+    <path d="{shadow}" fill="none" stroke="{GREEN}" stroke-opacity=".45" stroke-width="{cw * .115:.2f}" stroke-linejoin="miter"/>
     <use xlink:href="#blocks" fill="{GREEN}" filter="url(#glow)"/>
   </g>
-  <text x="{w / 2}" y="272" text-anchor="middle" font-size="13" fill="{MUTED}" letter-spacing=".5">{esc(tagline)}</text>
-  <rect class="cur" x="{w / 2 + tag_w / 2 + 8}" y="261" width="8" height="14" fill="{GREEN}"/>
+  {tags}
+  <rect class="cur" x="{w / 2 + last_w / 2 + 8:.1f}" y="{last_y - 11}" width="8" height="{tag_size + 1}" fill="{GREEN}"/>
   <rect class="beam" width="{w}" height="60" fill="url(#beam)"/>"""
     return window(w, h, "ricky@homelab: ~", body, css, defs)
 
@@ -337,7 +351,7 @@ def chip(x0, y0, s):
 
 
 def stats_card(user, repos, days, langs):
-    w, h = 420, 280
+    w, h = CARD_W, 280
     created = dt.date.fromisoformat(user["createdAt"][:10])
     today = dt.date.today()
     months = (today.year - created.year) * 12 + today.month - created.month
@@ -354,7 +368,7 @@ def stats_card(user, repos, days, langs):
         ("Followers", f"{user['followers']['totalCount']:,}"),
         ("Top lang", langs[0][0] if langs else "–"),
     ]
-    kx, vx, y0, lh = 160, 248, 82, 17
+    kx, vx, y0, lh = 154, 242, 82, 17
     lines = [
         f'<text class="in" x="{kx}" y="{y0 - 22}" font-size="14" font-weight="700" fill="{GREEN}">ricky<tspan fill="{MUTED}">@</tspan>github</text>',
         f'<line class="in" x1="{kx}" y1="{y0 - 14}" x2="{kx + 150}" y2="{y0 - 14}" stroke="{DIM}" stroke-dasharray="4 3"/>',
@@ -363,8 +377,8 @@ def stats_card(user, repos, days, langs):
         y = y0 + i * lh
         lines.append(
             f'<g class="in" style="animation-delay:{.1 + i * .06:.2f}s">'
-            f'<text x="{kx}" y="{y}" font-size="12.5" font-weight="700" fill="{GREEN}">{esc(k)}</text>'
-            f'<text x="{vx}" y="{y}" font-size="12.5" fill="{TEXT}">{esc(v)}</text></g>'
+            f'<text x="{kx}" y="{y}" font-size="13" font-weight="700" fill="{GREEN}">{esc(k)}</text>'
+            f'<text x="{vx}" y="{y}" font-size="13" fill="{TEXT}">{esc(v)}</text></g>'
         )
     palette = ["#ff5f57", "#febc2e", "#28c840", GREEN, "#2f81f7", "#a371f7", "#39c5cf", TEXT]
     by = y0 + len(rows) * lh + 2
@@ -378,16 +392,16 @@ def stats_card(user, repos, days, langs):
 """
     body = f"""
   <g filter="url(#glow)">
-  {chip(22, 70, 8)}
+  {chip(20, 70, 8)}
   </g>
-  <text x="82" y="214" text-anchor="middle" font-size="10" fill="{DIM}">RP2040 · ESP32</text>
+  <text x="80" y="214" text-anchor="middle" font-size="10" fill="{DIM}">RP2040 · ESP32</text>
   {''.join(lines)}"""
     return window(w, h, "neofetch", body, css)
 
 
 # ---------------------------------------------------------------- languages
 def langs_card(langs):
-    w, h = 420, 280
+    w, h = CARD_W, 280
     top = langs[:LANGS_SHOWN]
     rest = sum(p for _, p, _ in langs[LANGS_SHOWN:])
     if rest > 0.05:
@@ -413,9 +427,9 @@ def langs_card(langs):
         rows.append(
             f'<g class="in" style="animation-delay:{.2 + i * .07:.2f}s">'
             f'<circle cx="30" cy="{y - 4}" r="4.5" fill="{c}"/>'
-            f'<text x="44" y="{y}" font-size="12.5" fill="{TEXT}">{esc(n)}</text>'
+            f'<text x="44" y="{y}" font-size="13" fill="{TEXT}">{esc(n)}</text>'
             f"{leds}"
-            f'<text x="{w - 24}" y="{y}" text-anchor="end" font-size="12.5" font-weight="700" fill="{GREEN}">{p:.1f}%</text></g>'
+            f'<text x="{w - 24}" y="{y}" text-anchor="end" font-size="13" font-weight="700" fill="{GREEN}">{p:.1f}%</text></g>'
         )
     css = """
 .grow { transform-box: fill-box; transform-origin: left; animation: grow .8s ease-out both; }
@@ -433,19 +447,34 @@ def langs_card(langs):
 FLAME = "M0 -11 C5 -5 8 -1 8 4 C8 9 4 12 0 12 C-4 12 -8 9 -8 4 C-8 0 -5 -3 -3 -6 C-3 -2 -1 0 1 1 C2 -3 1 -7 0 -11 Z"
 
 
-def streak_card(days):
-    w, h = 850, 250
+def streak_card(days, compact=False):
     (cur, cs, ce), (lng, ls, le) = streaks(days)
     total = sum(c for _, c in days)
-    first = next((d for d, c in days if c), days[0][0] if days else None)
-    cols = [142, 425, 708]
+    first = next((d for d, c in days if c), None)
+    since = f"{fmt_date(first)} – Present" if first else ""
     r = 36
     circ = 2 * math.pi * r
+    if compact:
+        # ring on top, total / longest side by side underneath
+        w, h = CARD_W, 368
+        cx, cy = w / 2, 98
+        sides = [(w / 4, total, "Total Contributions", since), (w * 3 / 4, lng, "Longest Streak", fmt_range(ls, le))]
+        ny, nsize, ly, sy = 240, 28, 262, 281
+        rules = [(24, 200, w - 24, 200), (w / 2, 214, w / 2, 286)]
+        sx0, sx1, sy0, sy1 = 24, w - 24, 322, 352
+    else:
+        # total | ring | longest in three columns
+        w, h = WIDE_W, 250
+        cols = [w / 6, w / 2, w * 5 / 6]
+        cx, cy = cols[1], 96
+        sides = [(cols[0], total, "Total Contributions", since), (cols[2], lng, "Longest Streak", fmt_range(ls, le))]
+        ny, nsize, ly, sy = 108, 32, 158, 177
+        rules = [((cols[0] + cols[1]) / 2, 52, (cols[0] + cols[1]) / 2, 176), ((cols[1] + cols[2]) / 2, 52, (cols[1] + cols[2]) / 2, 176)]
+        sx0, sx1, sy0, sy1 = 24, w - 24, 200, 236
     # 52-week activity sparkline
     tail = days[-364:]
     weeks = [sum(c for _, c in tail[i:i + 7]) for i in range(0, len(tail), 7)]
-    peak = max(weeks) if weeks and max(weeks) else 1
-    sx0, sx1, sy0, sy1 = 24, w - 24, 200, 236
+    peak = max(weeks, default=0) or 1
     pts = [(sx0 + (sx1 - sx0) * i / max(len(weeks) - 1, 1), sy1 - (sy1 - sy0) * v / peak) for i, v in enumerate(weeks)]
     line = " ".join(f"{'M' if i == 0 else 'L'}{x:.1f} {y:.1f}" for i, (x, y) in enumerate(pts))
     area = f"{line} L{sx1} {sy1} L{sx0} {sy1} Z"
@@ -461,30 +490,26 @@ def streak_card(days):
     <stop offset="0" stop-color="{GREEN}" stop-opacity=".35"/>
     <stop offset="1" stop-color="{GREEN}" stop-opacity="0"/>
   </linearGradient>"""
-
-    def side(x, n, label, sub, delay):
-        return (
-            f'<g class="in" style="animation-delay:{delay}s">'
-            f'<text x="{x}" y="108" text-anchor="middle" font-size="32" font-weight="700" fill="{TEXT}">{n:,}</text>'
-            f'<text x="{x}" y="158" text-anchor="middle" font-size="13" font-weight="700" fill="{GREEN}">{label}</text>'
-            f'<text x="{x}" y="177" text-anchor="middle" font-size="11.5" fill="{MUTED}">{esc(sub)}</text></g>'
-        )
-
-    cx = cols[1]
+    side = "".join(
+        f'<g class="in" style="animation-delay:{.1 + i * .2:.1f}s">'
+        f'<text x="{x:g}" y="{ny}" text-anchor="middle" font-size="{nsize}" font-weight="700" fill="{TEXT}">{n:,}</text>'
+        f'<text x="{x:g}" y="{ly}" text-anchor="middle" font-size="13" font-weight="700" fill="{GREEN}">{label}</text>'
+        f'<text x="{x:g}" y="{sy}" text-anchor="middle" font-size="11.5" fill="{MUTED}">{esc(sub)}</text></g>'
+        for i, (x, n, label, sub) in enumerate(sides)
+    )
+    rule = "".join(f'<line x1="{a:g}" y1="{b}" x2="{c:g}" y2="{d}" stroke="{BORDER}"/>' for a, b, c, d in rules)
     body = f"""
-  <line x1="{(cols[0] + cols[1]) / 2}" y1="52" x2="{(cols[0] + cols[1]) / 2}" y2="176" stroke="{BORDER}"/>
-  <line x1="{(cols[1] + cols[2]) / 2}" y1="52" x2="{(cols[1] + cols[2]) / 2}" y2="176" stroke="{BORDER}"/>
-  {side(cols[0], total, "Total Contributions", f"{fmt_date(first)} – Present" if first else "", .1)}
+  {rule}
+  {side}
   <g class="in" style="animation-delay:.2s">
-    <circle cx="{cx}" cy="96" r="{r}" fill="none" stroke="{BORDER}" stroke-width="5"/>
-    <circle class="ring" cx="{cx}" cy="96" r="{r}" fill="none" stroke="{GREEN}" stroke-width="5" stroke-linecap="round" transform="rotate(-90 {cx} 96)" filter="url(#glow)"/>
-    <circle cx="{cx}" cy="{96 - r}" r="13" fill="{BG}"/>
-    <g transform="translate({cx} {96 - r - 1})"><path class="flame" d="{FLAME}" fill="{GREEN}" filter="url(#glow)"/></g>
-    <text x="{cx}" y="107" text-anchor="middle" font-size="30" font-weight="700" fill="{TEXT}">{cur:,}</text>
-    <text x="{cx}" y="158" text-anchor="middle" font-size="13" font-weight="700" fill="{GREEN}">Current Streak</text>
-    <text x="{cx}" y="177" text-anchor="middle" font-size="11.5" fill="{MUTED}">{esc(fmt_range(cs, ce))}</text>
+    <circle cx="{cx:g}" cy="{cy}" r="{r}" fill="none" stroke="{BORDER}" stroke-width="5"/>
+    <circle class="ring" cx="{cx:g}" cy="{cy}" r="{r}" fill="none" stroke="{GREEN}" stroke-width="5" stroke-linecap="round" transform="rotate(-90 {cx:g} {cy})" filter="url(#glow)"/>
+    <circle cx="{cx:g}" cy="{cy - r}" r="13" fill="{BG}"/>
+    <g transform="translate({cx:g} {cy - r - 1})"><path class="flame" d="{FLAME}" fill="{GREEN}" filter="url(#glow)"/></g>
+    <text x="{cx:g}" y="{cy + 11}" text-anchor="middle" font-size="30" font-weight="700" fill="{TEXT}">{cur:,}</text>
+    <text x="{cx:g}" y="{cy + 62}" text-anchor="middle" font-size="13" font-weight="700" fill="{GREEN}">Current Streak</text>
+    <text x="{cx:g}" y="{cy + 81}" text-anchor="middle" font-size="11.5" fill="{MUTED}">{esc(fmt_range(cs, ce))}</text>
   </g>
-  {side(cols[2], lng, "Longest Streak", fmt_range(ls, le), .3)}
   <line x1="{sx0}" y1="{sy1 + .5}" x2="{sx1}" y2="{sy1 + .5}" stroke="{BORDER}"/>
   <text x="{sx0}" y="{sy0 - 6}" font-size="10" fill="{DIM}">activity · last 52 weeks</text>
   <text x="{sx1}" y="{sy0 - 6}" text-anchor="end" font-size="10" fill="{DIM}">peak {peak:,}/wk</text>
@@ -512,28 +537,28 @@ def fork(x, y):
 
 
 def repo_card(repo, display, fallback):
-    w, h = 410, 162
+    w, h = CARD_W, 162
     desc = repo["description"] or fallback or "No description yet."
-    lines = textwrap.wrap(desc, 50)
+    lines = textwrap.wrap(desc, 48)
     if len(lines) > 3:
         lines = lines[:3]
-        lines[2] = lines[2][:47].rstrip() + "…"
+        lines[2] = lines[2][:45].rstrip() + "…"
     lang = repo["primaryLanguage"] or {"name": "—", "color": MUTED}
-    lang_w = len(lang["name"]) * 12 * 0.6
+    lang_w = len(lang["name"]) * 12.5 * 0.6
     sx = 44 + lang_w + 26
     texts = "".join(
-        f'<text x="22" y="{82 + i * 18}" font-size="12" fill="{MUTED}">{esc(t)}</text>' for i, t in enumerate(lines)
+        f'<text x="22" y="{82 + i * 18}" font-size="12.5" fill="{MUTED}">{esc(t)}</text>' for i, t in enumerate(lines)
     )
     body = f"""
   <g class="in">
   <text x="22" y="60" font-size="15" font-weight="700" fill="{GREEN}">{esc(display)}<tspan fill="{DIM}" font-weight="400"> /</tspan></text>
   {texts}
   <circle cx="28" cy="{h - 22}" r="5.5" fill="{lang['color'] or MUTED}"/>
-  <text x="40" y="{h - 18}" font-size="12" fill="{TEXT}">{esc(lang['name'])}</text>
+  <text x="40" y="{h - 18}" font-size="12.5" fill="{TEXT}">{esc(lang['name'])}</text>
   {star(sx, h - 23)}
-  <text x="{sx + 11}" y="{h - 18}" font-size="12" fill="{TEXT}">{repo['stargazerCount']:,}</text>
+  <text x="{sx + 11}" y="{h - 18}" font-size="12.5" fill="{TEXT}">{repo['stargazerCount']:,}</text>
   {fork(sx + 46, h - 22)}
-  <text x="{sx + 56}" y="{h - 18}" font-size="12" fill="{TEXT}">{repo['forkCount']:,}</text>
+  <text x="{sx + 56}" y="{h - 18}" font-size="12.5" fill="{TEXT}">{repo['forkCount']:,}</text>
   </g>"""
     return window(w, h, f"~/{display}", body)
 
@@ -546,9 +571,11 @@ def main():
     os.makedirs(OUT, exist_ok=True)
     cards = {
         "header.svg": header_card(),
+        "header-compact.svg": header_card(compact=True),
         "stats.svg": stats_card(user, repos, days, langs),
         "languages.svg": langs_card(langs),
         "streak.svg": streak_card(days),
+        "streak-compact.svg": streak_card(days, compact=True),
     }
     for name, (display, fallback) in FEATURED.items():
         if name not in by_name:
