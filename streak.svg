@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="824" height="250" viewBox="0 0 824 250" role="img" aria-label="streak --watch">
+<title>streak --watch</title>
+<style>
+text { font-family: 'JetBrains Mono','Fira Code','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace; }
+.bar { fill: #8b949e; font-size: 12px; }
+.in { opacity: 0; animation: fade .6s ease-out forwards; }
+@keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes blink { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; } .in { opacity: 1; } }
+
+.ring { stroke-dasharray: 226.2; stroke-dashoffset: 226.2; animation: draw 1.4s ease-out .2s forwards; }
+.trace { stroke-dasharray: 2400; stroke-dashoffset: 2400; animation: draw 2.4s ease-out .4s forwards; }
+.flame { transform-box: fill-box; transform-origin: center bottom; animation: flick 1.6s ease-in-out infinite; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes flick { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08, .94); } }
+</style>
+<defs>
+  <clipPath id="win"><rect width="824" height="250" rx="10"/></clipPath>
+  <pattern id="scan" width="4" height="3" patternUnits="userSpaceOnUse"><rect width="4" height="1" fill="#fff" opacity=".022"/></pattern>
+  <linearGradient id="edge" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#00ff66" stop-opacity=".6"/>
+    <stop offset=".45" stop-color="#00ff66" stop-opacity=".07"/>
+    <stop offset="1" stop-color="#00ff66" stop-opacity=".4"/>
+  </linearGradient>
+  <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+    <feGaussianBlur stdDeviation="2.4" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#00ff66" stop-opacity=".35"/>
+    <stop offset="1" stop-color="#00ff66" stop-opacity="0"/>
+  </linearGradient>
+</defs>
+<g clip-path="url(#win)">
+  <rect width="824" height="250" fill="#0d1117"/>
+  <rect width="824" height="30" fill="#161b22"/>
+  <line x1="0" y1="30.5" x2="824" y2="30.5" stroke="#30363d"/>
+  <circle cx="18" cy="15" r="5.5" fill="#ff5f57"/>
+  <circle cx="36" cy="15" r="5.5" fill="#febc2e"/>
+  <circle cx="54" cy="15" r="5.5" fill="#28c840"/>
+  <text x="412.0" y="19.5" text-anchor="middle" class="bar">streak --watch</text>
+
+  <line x1="274.667" y1="52" x2="274.667" y2="176" stroke="#30363d"/><line x1="549.333" y1="52" x2="549.333" y2="176" stroke="#30363d"/>
+  <g class="in" style="animation-delay:0.1s"><text x="137.333" y="108" text-anchor="middle" font-size="32" font-weight="700" fill="#c9d1d9">597</text><text x="137.333" y="158" text-anchor="middle" font-size="13" font-weight="700" fill="#00ff66">Total Contributions</text><text x="137.333" y="177" text-anchor="middle" font-size="11.5" fill="#8b949e">Jul 19, 2019 – Present</text></g><g class="in" style="animation-delay:0.3s"><text x="686.667" y="108" text-anchor="middle" font-size="32" font-weight="700" fill="#c9d1d9">23</text><text x="686.667" y="158" text-anchor="middle" font-size="13" font-weight="700" fill="#00ff66">Longest Streak</text><text x="686.667" y="177" text-anchor="middle" font-size="11.5" fill="#8b949e">Jun 16 – Jul 8, 2026</text></g>
+  <g class="in" style="animation-delay:.2s">
+    <circle cx="412" cy="96" r="36" fill="none" stroke="#30363d" stroke-width="5"/>
+    <circle class="ring" cx="412" cy="96" r="36" fill="none" stroke="#00ff66" stroke-width="5" stroke-linecap="round" transform="rotate(-90 412 96)" filter="url(#glow)"/>
+    <circle cx="412" cy="60" r="13" fill="#0d1117"/>
+    <g transform="translate(412 59)"><path class="flame" d="M0 -11 C5 -5 8 -1 8 4 C8 9 4 12 0 12 C-4 12 -8 9 -8 4 C-8 0 -5 -3 -3 -6 C-3 -2 -1 0 1 1 C2 -3 1 -7 0 -11 Z" fill="#00ff66" filter="url(#glow)"/></g>
+    <text x="412" y="107" text-anchor="middle" font-size="30" font-weight="700" fill="#c9d1d9">4</text>
+    <text x="412" y="158" text-anchor="middle" font-size="13" font-weight="700" fill="#00ff66">Current Streak</text>
+    <text x="412" y="177" text-anchor="middle" font-size="11.5" fill="#8b949e">Oct 7 – Oct 10, 2026</text>
+  </g>
+  <line x1="24" y1="236.5" x2="800" y2="236.5" stroke="#30363d"/>
+  <text x="24" y="194" font-size="10" fill="#484f58">activity · last 52 weeks</text>
+  <text x="800" y="194" text-anchor="end" font-size="10" fill="#484f58">peak 90/wk</text>
+  <path class="in" style="animation-delay:.8s" d="M24.0 236.0 L39.2 236.0 L54.4 235.2 L69.6 236.0 L84.9 236.0 L100.1 236.0 L115.3 236.0 L130.5 236.0 L145.7 236.0 L160.9 236.0 L176.2 236.0 L191.4 236.0 L206.6 236.0 L221.8 236.0 L237.0 236.0 L252.2 236.0 L267.5 236.0 L282.7 236.0 L297.9 236.0 L313.1 236.0 L328.3 236.0 L343.5 236.0 L358.7 235.6 L374.0 235.6 L389.2 234.4 L404.4 235.6 L419.6 236.0 L434.8 236.0 L450.0 234.4 L465.3 235.2 L480.5 236.0 L495.7 236.0 L510.9 236.0 L526.1 236.0 L541.3 200.0 L556.5 201.2 L571.8 208.4 L587.0 224.4 L602.2 219.2 L617.4 234.4 L632.6 223.2 L647.8 213.6 L663.1 235.2 L678.3 230.8 L693.5 225.6 L708.7 234.8 L723.9 236.0 L739.1 236.0 L754.4 236.0 L769.6 236.0 L784.8 236.0 L800.0 205.6 L800 236 L24 236 Z" fill="url(#area)"/>
+  <path class="trace" d="M24.0 236.0 L39.2 236.0 L54.4 235.2 L69.6 236.0 L84.9 236.0 L100.1 236.0 L115.3 236.0 L130.5 236.0 L145.7 236.0 L160.9 236.0 L176.2 236.0 L191.4 236.0 L206.6 236.0 L221.8 236.0 L237.0 236.0 L252.2 236.0 L267.5 236.0 L282.7 236.0 L297.9 236.0 L313.1 236.0 L328.3 236.0 L343.5 236.0 L358.7 235.6 L374.0 235.6 L389.2 234.4 L404.4 235.6 L419.6 236.0 L434.8 236.0 L450.0 234.4 L465.3 235.2 L480.5 236.0 L495.7 236.0 L510.9 236.0 L526.1 236.0 L541.3 200.0 L556.5 201.2 L571.8 208.4 L587.0 224.4 L602.2 219.2 L617.4 234.4 L632.6 223.2 L647.8 213.6 L663.1 235.2 L678.3 230.8 L693.5 225.6 L708.7 234.8 L723.9 236.0 L739.1 236.0 L754.4 236.0 L769.6 236.0 L784.8 236.0 L800.0 205.6" fill="none" stroke="#00ff66" stroke-width="1.6" stroke-linejoin="round" filter="url(#glow)"/>
+  <rect y="31" width="824" height="219" fill="url(#scan)"/>
+</g>
+<rect x=".5" y=".5" width="823" height="249" rx="9.5" fill="none" stroke="url(#edge)"/>
+</svg>

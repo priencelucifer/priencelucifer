@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="410" height="268" viewBox="0 0 410 268" role="img" aria-label="ricky@homelab: ~">
+<title>ricky@homelab: ~</title>
+<style>
+text { font-family: 'JetBrains Mono','Fira Code','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace; }
+.bar { fill: #8b949e; font-size: 12px; }
+.in { opacity: 0; animation: fade .6s ease-out forwards; }
+@keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes blink { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; } .in { opacity: 1; } }
+
+.art { animation: flicker 7s infinite; }
+.ghost { opacity: 0; animation: glitch 7s infinite; }
+.ghost.b { animation-delay: .05s; }
+.beam { animation: sweep 6s linear infinite; }
+.cur { animation: blink 1s step-end infinite; }
+@keyframes flicker { 0%, 90%, 93%, 100% { opacity: 1; } 91% { opacity: .55; } 92% { opacity: .9; } }
+@keyframes glitch {
+  0%, 89%, 96%, 100% { opacity: 0; transform: none; }
+  90% { opacity: .8; transform: translate(-5px, 1px); }
+  92% { opacity: .6; transform: translate(4px, -1px); }
+  94% { opacity: .8; transform: translate(-2px, 0); }
+}
+@keyframes sweep { from { transform: translateY(-60px); } to { transform: translateY(268px); } }
+</style>
+<defs>
+  <clipPath id="win"><rect width="410" height="268" rx="10"/></clipPath>
+  <pattern id="scan" width="4" height="3" patternUnits="userSpaceOnUse"><rect width="4" height="1" fill="#fff" opacity=".022"/></pattern>
+  <linearGradient id="edge" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#00ff66" stop-opacity=".6"/>
+    <stop offset=".45" stop-color="#00ff66" stop-opacity=".07"/>
+    <stop offset="1" stop-color="#00ff66" stop-opacity=".4"/>
+  </linearGradient>
+  <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+    <feGaussianBlur stdDeviation="2.4" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <pattern id="dots" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="9" cy="9" r=".9" fill="#00ff66" opacity=".09"/></pattern>
+  <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#00ff66" stop-opacity="0"/>
+    <stop offset=".85" stop-color="#00ff66" stop-opacity=".07"/>
+    <stop offset="1" stop-color="#00ff66" stop-opacity=".18"/>
+  </linearGradient>
+  <radialGradient id="vignette" cx=".5" cy=".55" r=".75">
+    <stop offset=".55" stop-color="#0d1117" stop-opacity="0"/>
+    <stop offset="1" stop-color="#000" stop-opacity=".55"/>
+  </radialGradient>
+  <g id="blocks"><rect x="25.0" y="76" width="60" height="19.5"/><rect x="105.0" y="76" width="20" height="19.5"/><rect x="145.0" y="76" width="60" height="19.5"/><rect x="215.0" y="76" width="20" height="19.5"/><rect x="265.0" y="76" width="20" height="19.5"/><rect x="295.0" y="76" width="20" height="19.5"/><rect x="355.0" y="76" width="20" height="19.5"/><rect x="25.0" y="95" width="20" height="19.5"/><rect x="75.0" y="95" width="20" height="19.5"/><rect x="105.0" y="95" width="20" height="19.5"/><rect x="135.0" y="95" width="20" height="19.5"/><rect x="215.0" y="95" width="20" height="19.5"/><rect x="255.0" y="95" width="20" height="19.5"/><rect x="305.0" y="95" width="20" height="19.5"/><rect x="345.0" y="95" width="20" height="19.5"/><rect x="25.0" y="114" width="60" height="19.5"/><rect x="105.0" y="114" width="20" height="19.5"/><rect x="135.0" y="114" width="20" height="19.5"/><rect x="215.0" y="114" width="50" height="19.5"/><rect x="315.0" y="114" width="40" height="19.5"/><rect x="25.0" y="133" width="20" height="19.5"/><rect x="75.0" y="133" width="20" height="19.5"/><rect x="105.0" y="133" width="20" height="19.5"/><rect x="135.0" y="133" width="20" height="19.5"/><rect x="215.0" y="133" width="20" height="19.5"/><rect x="255.0" y="133" width="20" height="19.5"/><rect x="325.0" y="133" width="20" height="19.5"/><rect x="25.0" y="152" width="20" height="19.5"/><rect x="75.0" y="152" width="20" height="19.5"/><rect x="105.0" y="152" width="20" height="19.5"/><rect x="145.0" y="152" width="60" height="19.5"/><rect x="215.0" y="152" width="20" height="19.5"/><rect x="265.0" y="152" width="20" height="19.5"/><rect x="325.0" y="152" width="20" height="19.5"/></g>
+</defs>
+<g clip-path="url(#win)">
+  <rect width="410" height="268" fill="#0d1117"/>
+  <rect width="410" height="30" fill="#161b22"/>
+  <line x1="0" y1="30.5" x2="410" y2="30.5" stroke="#30363d"/>
+  <circle cx="18" cy="15" r="5.5" fill="#ff5f57"/>
+  <circle cx="36" cy="15" r="5.5" fill="#febc2e"/>
+  <circle cx="54" cy="15" r="5.5" fill="#28c840"/>
+  <text x="205.0" y="19.5" text-anchor="middle" class="bar">ricky@homelab: ~</text>
+
+  <rect y="31" width="410" height="268" fill="url(#dots)"/>
+  <rect y="31" width="410" height="268" fill="url(#vignette)"/>
+  <text x="24" y="60" font-size="13"><tspan fill="#00ff66" font-weight="700">ricky@github</tspan><tspan fill="#8b949e">:</tspan><tspan fill="#58a6ff">~</tspan><tspan fill="#8b949e">$ </tspan><tspan fill="#c9d1d9">figlet ricky</tspan></text>
+  <g class="ghost"><use xlink:href="#blocks" fill="#ff2e88"/></g>
+  <g class="ghost b"><use xlink:href="#blocks" fill="#00e5ff"/></g>
+  <g class="art">
+    <path d="M85 83.3 L92.2 83.3 L92.2 95 M85 87.7 L87.8 87.7 L87.8 95 M125 83.3 L132.2 83.3 L132.2 95 M125 87.7 L127.8 87.7 L127.8 95 M205 83.3 L212.2 83.3 L212.2 95 M205 87.7 L207.8 87.7 L207.8 95 M235 83.3 L242.2 83.3 L242.2 95 M235 87.7 L237.8 87.7 L237.8 95 M285 83.3 L292.2 83.3 L292.2 95 M285 87.7 L287.8 87.7 L287.8 95 M315 83.3 L322.2 83.3 L322.2 95 M315 87.7 L317.8 87.7 L317.8 95 M375 83.3 L382.2 83.3 L382.2 95 M375 87.7 L377.8 87.7 L377.8 95 M55 102.3 L47.8 102.3 L47.8 114 M55 106.7 L52.2 106.7 L52.2 114 M55 102.3 L65 102.3 M55 106.7 L65 106.7 M65 102.3 L75 102.3 M65 106.7 L75 106.7 M95 102.3 L102.2 102.3 L102.2 114 M95 106.7 L97.8 106.7 L97.8 114 M127.8 95 L127.8 114 M132.2 95 L132.2 114 M165 102.3 L157.8 102.3 L157.8 114 M165 106.7 L162.2 106.7 L162.2 114 M165 102.3 L175 102.3 M165 106.7 L175 106.7 M175 102.3 L185 102.3 M175 106.7 L185 106.7 M185 102.3 L195 102.3 M185 106.7 L195 106.7 M195 102.3 L205 102.3 M195 106.7 L205 106.7 M212.2 95 L212.2 106.7 L205 106.7 M207.8 95 L207.8 102.3 L205 102.3 M237.8 95 L237.8 114 M242.2 95 L242.2 114 M285 102.3 L277.8 102.3 L277.8 114 M285 106.7 L282.2 106.7 L282.2 114 M292.2 95 L292.2 106.7 L285 106.7 M287.8 95 L287.8 102.3 L285 102.3 M297.8 95 L297.8 106.7 L305 106.7 M302.2 95 L302.2 102.3 L305 102.3 M325 102.3 L332.2 102.3 L332.2 114 M325 106.7 L327.8 106.7 L327.8 114 M375 102.3 L367.8 102.3 L367.8 114 M375 106.7 L372.2 106.7 L372.2 114 M382.2 95 L382.2 106.7 L375 106.7 M377.8 95 L377.8 102.3 L375 102.3 M95 121.3 L87.8 121.3 L87.8 133 M95 125.7 L92.2 125.7 L92.2 133 M102.2 114 L102.2 125.7 L95 125.7 M97.8 114 L97.8 121.3 L95 121.3 M127.8 114 L127.8 133 M132.2 114 L132.2 133 M157.8 114 L157.8 133 M162.2 114 L162.2 133 M275 121.3 L267.8 121.3 L267.8 133 M275 125.7 L272.2 125.7 L272.2 133 M282.2 114 L282.2 125.7 L275 125.7 M277.8 114 L277.8 121.3 L275 121.3 M307.8 114 L307.8 125.7 L315 125.7 M312.2 114 L312.2 121.3 L315 121.3 M365 121.3 L357.8 121.3 L357.8 133 M365 125.7 L362.2 125.7 L362.2 133 M372.2 114 L372.2 125.7 L365 125.7 M367.8 114 L367.8 121.3 L365 121.3 M55 140.3 L47.8 140.3 L47.8 152 M55 144.7 L52.2 144.7 L52.2 152 M55 140.3 L65 140.3 M55 144.7 L65 144.7 M65 140.3 L75 140.3 M65 144.7 L75 144.7 M95 140.3 L102.2 140.3 L102.2 152 M95 144.7 L97.8 144.7 L97.8 152 M127.8 133 L127.8 152 M132.2 133 L132.2 152 M157.8 133 L157.8 152 M162.2 133 L162.2 152 M245 140.3 L237.8 140.3 L237.8 152 M245 144.7 L242.2 144.7 L242.2 152 M245 140.3 L255 140.3 M245 144.7 L255 144.7 M275 140.3 L282.2 140.3 L282.2 152 M275 144.7 L277.8 144.7 L277.8 152 M317.8 133 L317.8 144.7 L325 144.7 M322.2 133 L322.2 140.3 L325 140.3 M355 140.3 L347.8 140.3 L347.8 152 M355 144.7 L352.2 144.7 L352.2 152 M362.2 133 L362.2 144.7 L355 144.7 M357.8 133 L357.8 140.3 L355 140.3 M47.8 152 L47.8 171 M52.2 152 L52.2 171 M97.8 152 L97.8 171 M102.2 152 L102.2 171 M127.8 152 L127.8 171 M132.2 152 L132.2 171 M137.8 152 L137.8 163.7 L145 163.7 M142.2 152 L142.2 159.3 L145 159.3 M205 159.3 L212.2 159.3 L212.2 171 M205 163.7 L207.8 163.7 L207.8 171 M237.8 152 L237.8 171 M242.2 152 L242.2 171 M285 159.3 L292.2 159.3 L292.2 171 M285 163.7 L287.8 163.7 L287.8 171 M347.8 152 L347.8 171 M352.2 152 L352.2 171 M27.8 171 L27.8 182.7 L35 182.7 M32.2 171 L32.2 178.3 L35 178.3 M35 178.3 L45 178.3 M35 182.7 L45 182.7 M52.2 171 L52.2 182.7 L45 182.7 M47.8 171 L47.8 178.3 L45 178.3 M77.8 171 L77.8 182.7 L85 182.7 M82.2 171 L82.2 178.3 L85 178.3 M85 178.3 L95 178.3 M85 182.7 L95 182.7 M102.2 171 L102.2 182.7 L95 182.7 M97.8 171 L97.8 178.3 L95 178.3 M107.8 171 L107.8 182.7 L115 182.7 M112.2 171 L112.2 178.3 L115 178.3 M115 178.3 L125 178.3 M115 182.7 L125 182.7 M132.2 171 L132.2 182.7 L125 182.7 M127.8 171 L127.8 178.3 L125 178.3 M147.8 171 L147.8 182.7 L155 182.7 M152.2 171 L152.2 178.3 L155 178.3 M155 178.3 L165 178.3 M155 182.7 L165 182.7 M165 178.3 L175 178.3 M165 182.7 L175 182.7 M175 178.3 L185 178.3 M175 182.7 L185 182.7 M185 178.3 L195 178.3 M185 182.7 L195 182.7 M195 178.3 L205 178.3 M195 182.7 L205 182.7 M212.2 171 L212.2 182.7 L205 182.7 M207.8 171 L207.8 178.3 L205 178.3 M217.8 171 L217.8 182.7 L225 182.7 M222.2 171 L222.2 178.3 L225 178.3 M225 178.3 L235 178.3 M225 182.7 L235 182.7 M242.2 171 L242.2 182.7 L235 182.7 M237.8 171 L237.8 178.3 L235 178.3 M267.8 171 L267.8 182.7 L275 182.7 M272.2 171 L272.2 178.3 L275 178.3 M275 178.3 L285 178.3 M275 182.7 L285 182.7 M292.2 171 L292.2 182.7 L285 182.7 M287.8 171 L287.8 178.3 L285 178.3 M327.8 171 L327.8 182.7 L335 182.7 M332.2 171 L332.2 178.3 L335 178.3 M335 178.3 L345 178.3 M335 182.7 L345 182.7 M352.2 171 L352.2 182.7 L345 182.7 M347.8 171 L347.8 178.3 L345 178.3" fill="none" stroke="#00ff66" stroke-opacity=".45" stroke-width="1.15" stroke-linejoin="miter"/>
+    <use xlink:href="#blocks" fill="#00ff66" filter="url(#glow)"/>
+  </g>
+  <text x="205.0" y="222" text-anchor="middle" font-size="14" fill="#8b949e" letter-spacing=".5">embedded · networking</text><text x="205.0" y="244" text-anchor="middle" font-size="14" fill="#8b949e" letter-spacing=".5">self-hosting · homelab</text>
+  <rect class="cur" x="310.9" y="233" width="8" height="15" fill="#00ff66"/>
+  <rect class="beam" width="410" height="60" fill="url(#beam)"/>
+  <rect y="31" width="410" height="237" fill="url(#scan)"/>
+</g>
+<rect x=".5" y=".5" width="409" height="267" rx="9.5" fill="none" stroke="url(#edge)"/>
+</svg>
