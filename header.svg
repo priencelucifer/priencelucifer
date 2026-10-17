@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="824" height="300" viewBox="0 0 824 300" role="img" aria-label="ricky@homelab: ~">
+<title>ricky@homelab: ~</title>
+<style>
+text { font-family: 'JetBrains Mono','Fira Code','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace; }
+.bar { fill: #8b949e; font-size: 12px; }
+.in { opacity: 0; animation: fade .6s ease-out forwards; }
+@keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes blink { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; } .in { opacity: 1; } }
+
+.art { animation: flicker 7s infinite; }
+.ghost { opacity: 0; animation: glitch 7s infinite; }
+.ghost.b { animation-delay: .05s; }
+.beam { animation: sweep 6s linear infinite; }
+.cur { animation: blink 1s step-end infinite; }
+@keyframes flicker { 0%, 90%, 93%, 100% { opacity: 1; } 91% { opacity: .55; } 92% { opacity: .9; } }
+@keyframes glitch {
+  0%, 89%, 96%, 100% { opacity: 0; transform: none; }
+  90% { opacity: .8; transform: translate(-5px, 1px); }
+  92% { opacity: .6; transform: translate(4px, -1px); }
+  94% { opacity: .8; transform: translate(-2px, 0); }
+}
+@keyframes sweep { from { transform: translateY(-60px); } to { transform: translateY(300px); } }
+</style>
+<defs>
+  <clipPath id="win"><rect width="824" height="300" rx="10"/></clipPath>
+  <pattern id="scan" width="4" height="3" patternUnits="userSpaceOnUse"><rect width="4" height="1" fill="#fff" opacity=".022"/></pattern>
+  <linearGradient id="edge" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#00ff66" stop-opacity=".6"/>
+    <stop offset=".45" stop-color="#00ff66" stop-opacity=".07"/>
+    <stop offset="1" stop-color="#00ff66" stop-opacity=".4"/>
+  </linearGradient>
+  <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+    <feGaussianBlur stdDeviation="2.4" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <pattern id="dots" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="9" cy="9" r=".9" fill="#00ff66" opacity=".09"/></pattern>
+  <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#00ff66" stop-opacity="0"/>
+    <stop offset=".85" stop-color="#00ff66" stop-opacity=".07"/>
+    <stop offset="1" stop-color="#00ff66" stop-opacity=".18"/>
+  </linearGradient>
+  <radialGradient id="vignette" cx=".5" cy=".55" r=".75">
+    <stop offset=".55" stop-color="#0d1117" stop-opacity="0"/>
+    <stop offset="1" stop-color="#000" stop-opacity=".55"/>
+  </radialGradient>
+  <g id="blocks"><rect x="160.0" y="84" width="84" height="26.5"/><rect x="272.0" y="84" width="28" height="26.5"/><rect x="328.0" y="84" width="84" height="26.5"/><rect x="426.0" y="84" width="28" height="26.5"/><rect x="496.0" y="84" width="28" height="26.5"/><rect x="538.0" y="84" width="28" height="26.5"/><rect x="622.0" y="84" width="28" height="26.5"/><rect x="160.0" y="110" width="28" height="26.5"/><rect x="230.0" y="110" width="28" height="26.5"/><rect x="272.0" y="110" width="28" height="26.5"/><rect x="314.0" y="110" width="28" height="26.5"/><rect x="426.0" y="110" width="28" height="26.5"/><rect x="482.0" y="110" width="28" height="26.5"/><rect x="552.0" y="110" width="28" height="26.5"/><rect x="608.0" y="110" width="28" height="26.5"/><rect x="160.0" y="136" width="84" height="26.5"/><rect x="272.0" y="136" width="28" height="26.5"/><rect x="314.0" y="136" width="28" height="26.5"/><rect x="426.0" y="136" width="70" height="26.5"/><rect x="566.0" y="136" width="56" height="26.5"/><rect x="160.0" y="162" width="28" height="26.5"/><rect x="230.0" y="162" width="28" height="26.5"/><rect x="272.0" y="162" width="28" height="26.5"/><rect x="314.0" y="162" width="28" height="26.5"/><rect x="426.0" y="162" width="28" height="26.5"/><rect x="482.0" y="162" width="28" height="26.5"/><rect x="580.0" y="162" width="28" height="26.5"/><rect x="160.0" y="188" width="28" height="26.5"/><rect x="230.0" y="188" width="28" height="26.5"/><rect x="272.0" y="188" width="28" height="26.5"/><rect x="328.0" y="188" width="84" height="26.5"/><rect x="426.0" y="188" width="28" height="26.5"/><rect x="496.0" y="188" width="28" height="26.5"/><rect x="580.0" y="188" width="28" height="26.5"/></g>
+</defs>
+<g clip-path="url(#win)">
+  <rect width="824" height="300" fill="#0d1117"/>
+  <rect width="824" height="30" fill="#161b22"/>
+  <line x1="0" y1="30.5" x2="824" y2="30.5" stroke="#30363d"/>
+  <circle cx="18" cy="15" r="5.5" fill="#ff5f57"/>
+  <circle cx="36" cy="15" r="5.5" fill="#febc2e"/>
+  <circle cx="54" cy="15" r="5.5" fill="#28c840"/>
+  <text x="412.0" y="19.5" text-anchor="middle" class="bar">ricky@homelab: ~</text>
+
+  <rect y="31" width="824" height="300" fill="url(#dots)"/>
+  <rect y="31" width="824" height="300" fill="url(#vignette)"/>
+  <text x="28" y="62" font-size="13"><tspan fill="#00ff66" font-weight="700">ricky@github</tspan><tspan fill="#8b949e">:</tspan><tspan fill="#58a6ff">~</tspan><tspan fill="#8b949e">$ </tspan><tspan fill="#c9d1d9">figlet -f &quot;ANSI Shadow&quot; ricky</tspan></text>
+  <g class="ghost"><use xlink:href="#blocks" fill="#ff2e88"/></g>
+  <g class="ghost b"><use xlink:href="#blocks" fill="#00e5ff"/></g>
+  <g class="art">
+    <path d="M244 93.92 L254.08 93.92 L254.08 110 M244 100.08 L247.92 100.08 L247.92 110 M300 93.92 L310.08 93.92 L310.08 110 M300 100.08 L303.92 100.08 L303.92 110 M412 93.92 L422.08 93.92 L422.08 110 M412 100.08 L415.92 100.08 L415.92 110 M454 93.92 L464.08 93.92 L464.08 110 M454 100.08 L457.92 100.08 L457.92 110 M524 93.92 L534.08 93.92 L534.08 110 M524 100.08 L527.92 100.08 L527.92 110 M566 93.92 L576.08 93.92 L576.08 110 M566 100.08 L569.92 100.08 L569.92 110 M650 93.92 L660.08 93.92 L660.08 110 M650 100.08 L653.92 100.08 L653.92 110 M202 119.92 L191.92 119.92 L191.92 136 M202 126.08 L198.08 126.08 L198.08 136 M202 119.92 L216 119.92 M202 126.08 L216 126.08 M216 119.92 L230 119.92 M216 126.08 L230 126.08 M258 119.92 L268.08 119.92 L268.08 136 M258 126.08 L261.92 126.08 L261.92 136 M303.92 110 L303.92 136 M310.08 110 L310.08 136 M356 119.92 L345.92 119.92 L345.92 136 M356 126.08 L352.08 126.08 L352.08 136 M356 119.92 L370 119.92 M356 126.08 L370 126.08 M370 119.92 L384 119.92 M370 126.08 L384 126.08 M384 119.92 L398 119.92 M384 126.08 L398 126.08 M398 119.92 L412 119.92 M398 126.08 L412 126.08 M422.08 110 L422.08 126.08 L412 126.08 M415.92 110 L415.92 119.92 L412 119.92 M457.92 110 L457.92 136 M464.08 110 L464.08 136 M524 119.92 L513.92 119.92 L513.92 136 M524 126.08 L520.08 126.08 L520.08 136 M534.08 110 L534.08 126.08 L524 126.08 M527.92 110 L527.92 119.92 L524 119.92 M541.92 110 L541.92 126.08 L552 126.08 M548.08 110 L548.08 119.92 L552 119.92 M580 119.92 L590.08 119.92 L590.08 136 M580 126.08 L583.92 126.08 L583.92 136 M650 119.92 L639.92 119.92 L639.92 136 M650 126.08 L646.08 126.08 L646.08 136 M660.08 110 L660.08 126.08 L650 126.08 M653.92 110 L653.92 119.92 L650 119.92 M258 145.92 L247.92 145.92 L247.92 162 M258 152.08 L254.08 152.08 L254.08 162 M268.08 136 L268.08 152.08 L258 152.08 M261.92 136 L261.92 145.92 L258 145.92 M303.92 136 L303.92 162 M310.08 136 L310.08 162 M345.92 136 L345.92 162 M352.08 136 L352.08 162 M510 145.92 L499.92 145.92 L499.92 162 M510 152.08 L506.08 152.08 L506.08 162 M520.08 136 L520.08 152.08 L510 152.08 M513.92 136 L513.92 145.92 L510 145.92 M555.92 136 L555.92 152.08 L566 152.08 M562.08 136 L562.08 145.92 L566 145.92 M636 145.92 L625.92 145.92 L625.92 162 M636 152.08 L632.08 152.08 L632.08 162 M646.08 136 L646.08 152.08 L636 152.08 M639.92 136 L639.92 145.92 L636 145.92 M202 171.92 L191.92 171.92 L191.92 188 M202 178.08 L198.08 178.08 L198.08 188 M202 171.92 L216 171.92 M202 178.08 L216 178.08 M216 171.92 L230 171.92 M216 178.08 L230 178.08 M258 171.92 L268.08 171.92 L268.08 188 M258 178.08 L261.92 178.08 L261.92 188 M303.92 162 L303.92 188 M310.08 162 L310.08 188 M345.92 162 L345.92 188 M352.08 162 L352.08 188 M468 171.92 L457.92 171.92 L457.92 188 M468 178.08 L464.08 178.08 L464.08 188 M468 171.92 L482 171.92 M468 178.08 L482 178.08 M510 171.92 L520.08 171.92 L520.08 188 M510 178.08 L513.92 178.08 L513.92 188 M569.92 162 L569.92 178.08 L580 178.08 M576.08 162 L576.08 171.92 L580 171.92 M622 171.92 L611.92 171.92 L611.92 188 M622 178.08 L618.08 178.08 L618.08 188 M632.08 162 L632.08 178.08 L622 178.08 M625.92 162 L625.92 171.92 L622 171.92 M191.92 188 L191.92 214 M198.08 188 L198.08 214 M261.92 188 L261.92 214 M268.08 188 L268.08 214 M303.92 188 L303.92 214 M310.08 188 L310.08 214 M317.92 188 L317.92 204.08 L328 204.08 M324.08 188 L324.08 197.92 L328 197.92 M412 197.92 L422.08 197.92 L422.08 214 M412 204.08 L415.92 204.08 L415.92 214 M457.92 188 L457.92 214 M464.08 188 L464.08 214 M524 197.92 L534.08 197.92 L534.08 214 M524 204.08 L527.92 204.08 L527.92 214 M611.92 188 L611.92 214 M618.08 188 L618.08 214 M163.92 214 L163.92 230.08 L174 230.08 M170.08 214 L170.08 223.92 L174 223.92 M174 223.92 L188 223.92 M174 230.08 L188 230.08 M198.08 214 L198.08 230.08 L188 230.08 M191.92 214 L191.92 223.92 L188 223.92 M233.92 214 L233.92 230.08 L244 230.08 M240.08 214 L240.08 223.92 L244 223.92 M244 223.92 L258 223.92 M244 230.08 L258 230.08 M268.08 214 L268.08 230.08 L258 230.08 M261.92 214 L261.92 223.92 L258 223.92 M275.92 214 L275.92 230.08 L286 230.08 M282.08 214 L282.08 223.92 L286 223.92 M286 223.92 L300 223.92 M286 230.08 L300 230.08 M310.08 214 L310.08 230.08 L300 230.08 M303.92 214 L303.92 223.92 L300 223.92 M331.92 214 L331.92 230.08 L342 230.08 M338.08 214 L338.08 223.92 L342 223.92 M342 223.92 L356 223.92 M342 230.08 L356 230.08 M356 223.92 L370 223.92 M356 230.08 L370 230.08 M370 223.92 L384 223.92 M370 230.08 L384 230.08 M384 223.92 L398 223.92 M384 230.08 L398 230.08 M398 223.92 L412 223.92 M398 230.08 L412 230.08 M422.08 214 L422.08 230.08 L412 230.08 M415.92 214 L415.92 223.92 L412 223.92 M429.92 214 L429.92 230.08 L440 230.08 M436.08 214 L436.08 223.92 L440 223.92 M440 223.92 L454 223.92 M440 230.08 L454 230.08 M464.08 214 L464.08 230.08 L454 230.08 M457.92 214 L457.92 223.92 L454 223.92 M499.92 214 L499.92 230.08 L510 230.08 M506.08 214 L506.08 223.92 L510 223.92 M510 223.92 L524 223.92 M510 230.08 L524 230.08 M534.08 214 L534.08 230.08 L524 230.08 M527.92 214 L527.92 223.92 L524 223.92 M583.92 214 L583.92 230.08 L594 230.08 M590.08 214 L590.08 223.92 L594 223.92 M594 223.92 L608 223.92 M594 230.08 L608 230.08 M618.08 214 L618.08 230.08 L608 230.08 M611.92 214 L611.92 223.92 L608 223.92" fill="none" stroke="#00ff66" stroke-opacity=".45" stroke-width="1.61" stroke-linejoin="miter"/>
+    <use xlink:href="#blocks" fill="#00ff66" filter="url(#glow)"/>
+  </g>
+  <text x="412.0" y="272" text-anchor="middle" font-size="13" fill="#8b949e" letter-spacing=".5">embedded  ·  networking  ·  self-hosting  ·  homelab</text>
+  <rect class="cur" x="635.8" y="261" width="8" height="14" fill="#00ff66"/>
+  <rect class="beam" width="824" height="60" fill="url(#beam)"/>
+  <rect y="31" width="824" height="269" fill="url(#scan)"/>
+</g>
+<rect x=".5" y=".5" width="823" height="299" rx="9.5" fill="none" stroke="url(#edge)"/>
+</svg>
